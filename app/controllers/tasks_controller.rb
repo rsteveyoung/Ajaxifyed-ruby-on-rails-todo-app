@@ -11,7 +11,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.create!(allowed_params)
 
-    redirect_to tasks_url
+    respond_to do |f|
+      f.html { redirect_to tasks_url }
+      f.js
+    end
   end
 
   def update
